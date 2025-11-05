@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 
     int n, opc;
     char entrada[25];
-    float precioAlto, precioBajo, promedioPrecios;
+    float promedioPrecios;
 
     // -------------- ENTRADAS --------------
 
@@ -110,14 +110,13 @@ int main(int argc, char *argv[])
         } while (precioValido == 0);
     }
 
-
     // -------------- SALIDAS --------------
 
-//Menu de informacion:
+    // Menu de informacion:
 
-do
-{
-    printf("\n=====================================\n");
+    do
+    {
+        printf("\n=====================================\n");
         printf("\nElija la opcion deseada:");
         printf("\n1) Precio total del inventario");
         printf("\n2) Producto mas caro y mas barato");
@@ -126,10 +125,7 @@ do
         printf("\n5) Salir");
         printf("\n>>>");
 
-        
-} while (opc != 6);
-
-
+    } while (opc != 6);
 
     // for (int i = 0; i < 1; i++)
     // {
