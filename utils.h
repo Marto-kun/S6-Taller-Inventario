@@ -6,7 +6,7 @@
 // Funcion de validacion de ingresos de caracteres
 int VerificacionDigitos(char string[])
 {
-
+    
     if (strlen(string) == 0)
     {
         return 0; // Comprobar que la cadena no este vacia
@@ -67,4 +67,23 @@ void LimpiarBuffer()
     int c;
     while ((c = getchar()) != '\n' && c != EOF)
         ;
+}
+
+int VerificacionChar(char string[])
+{
+    if (strlen(string) == 0)
+    {
+        return 0; // Comprobar que la cadena no este vacia
+    }
+
+    size_t len = strlen(string);
+
+    for (int i = 0; i < len; i++)
+    {
+        if (isdigit(string[i]))
+        {
+            return 0; // Si el elemento de la cadena es digito retorna 0
+        }
+    }
+    return 1; // Si la cadena son solo caracteres entonces se retorna 1
 }
