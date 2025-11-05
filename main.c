@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
 
     } while (nValido == 0);
 
-    char productos[1][25]; // cambiar [1] por "n"
+    char productos[n][25]; // cambiar [1] por "n"
+    float precios[n];
 
     for (int i = 0; i < n; i++)
     {
@@ -73,9 +74,37 @@ int main(int argc, char *argv[])
         } while (nombreValido == 0);
     }
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < n; i++)
     {
-        printf("\nNombre #%i: %s", i + 1, productos[i]);
+        int precioValido = 0;
+        do
+        {
+            printf("\nIngrese el precio unitario del libro #%i: ", i + 1);
+            if (fgets(entrada, 25, stdin) == NULL)
+            {
+                LimpiarBuffer();
+                continue;
+            }
+
+            // Eliminar el salto de línea al final de la cadena
+            entrada[strcspn(entrada, "\n")] = '\0';
+
+            if (VerificacionFloat(entrada) == 1)
+            {
+                int precioIngresado = atof(entrada);
+
+                if (precioIngresado > 0)
+                {
+                    precios[i] = precioIngresado;
+                    precioValido = 1;
+                }
+            }
+            else
+            {
+                printf("\nSolo se permiten numeros positivos. Intentelo de nuevo.");
+            }
+
+        } while (precioValido == 0);
     }
 
     return 0;
