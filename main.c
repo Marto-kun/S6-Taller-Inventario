@@ -5,8 +5,11 @@
 int main(int argc, char *argv[])
 {
 
-    int n;
+    int n, opc;
     char entrada[25];
+    float precioAlto, precioBajo, promedioPrecios;
+
+    // -------------- ENTRADAS --------------
 
     // Ingreso de cuantos productos se desean registrar:
     int nValido = 0;
@@ -106,6 +109,32 @@ int main(int argc, char *argv[])
 
         } while (precioValido == 0);
     }
+
+
+    // -------------- SALIDAS --------------
+
+//Menu de informacion:
+
+do
+{
+    printf("\n=====================================\n");
+        printf("\nElija la opcion deseada:");
+        printf("\n1) Precio total del inventario");
+        printf("\n2) Producto mas caro y mas barato");
+        printf("\n3) Promedio de precios");
+        printf("\n4) Buscar producto por nombre");
+        printf("\n5) Salir");
+        printf("\n>>>");
+
+        
+} while (opc != 6);
+
+
+
+    // for (int i = 0; i < 1; i++)
+    // {
+    //     printf("\nNombre #%i: %s", i + 1, productos[i]);
+    // }
 
     return 0;
 }
