@@ -80,7 +80,7 @@ int VerificacionChar(char string[])
 
     for (int i = 0; i < len; i++)
     {
-        if (isdigit(string[i]))
+        if (!isalpha(string[i]))
         {
             return 0; // Si el elemento de la cadena es digito retorna 0
         }
