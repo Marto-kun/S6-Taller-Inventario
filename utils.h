@@ -2,7 +2,12 @@
 #include <string.h>
 #include <ctype.h>
 
-// Funcion de validacion de ingresos de caracteres
+/**
+ * @brief Funcion para verificar numeros enteros
+ * 
+ * @param string 
+ * @return int 
+ */
 int VerificacionDigitos(char string[])
 {
     
@@ -21,7 +26,12 @@ int VerificacionDigitos(char string[])
     return 1; // Si la cadena son solo digitos entonces se retorna verdadero
 }
 
-// Funcion para validar un flotante valido
+/**
+ * @brief Funcion para validar datos decimales
+ * 
+ * @param string 
+ * @return int 
+ */
 int VerificacionFloat(char string[])
 {
     int nPuntos = 0;
@@ -60,7 +70,11 @@ int VerificacionFloat(char string[])
     return 1; // Si la cadena son digitos validos entonces se retorna verdadero
 }
 
-// Limpiar buffer
+/**
+ * @brief Funcion para limpieza de buffer
+ * evitar buffer overflow
+ * 
+ */
 void LimpiarBuffer()
 {
     int c;
@@ -68,6 +82,13 @@ void LimpiarBuffer()
         ;
 }
 
+
+/**
+ * @brief Funcion para verificar solo letras
+ * 
+ * @param string 
+ * @return int 
+ */
 int VerificacionChar(char string[])
 {
     if (strlen(string) == 0)
