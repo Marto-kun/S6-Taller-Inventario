@@ -1,13 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "utils.h"
+#include "calculos.h"
 
 int main(int argc, char *argv[])
 {
 
     int n, opc;
-    char entrada[25];
-    float promedioPrecios;
+    char entrada[25], busqueda[25];
 
     // -------------- ENTRADAS --------------
 
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
 
     } while (nValido == 0);
 
-    char productos[n][25]; // cambiar [1] por "n"
+    char productos[n][25];
     float precios[n];
 
     for (int i = 0; i < n; i++)
@@ -70,7 +71,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                printf("\nSolo se permiten numeros enteros. Intentelo de nuevo.");
+                printf("\nSolo se permiten letras. Intentelo de nuevo.");
                 nombreValido = 0;
             }
 
@@ -82,7 +83,7 @@ int main(int argc, char *argv[])
         int precioValido = 0;
         do
         {
-            printf("\nIngrese el precio unitario del libro #%i: ", i + 1);
+            printf("\nIngrese el precio de %c: ", productos[i]);
             if (fgets(entrada, 25, stdin) == NULL)
             {
                 LimpiarBuffer();
@@ -123,14 +124,77 @@ int main(int argc, char *argv[])
         printf("\n3) Promedio de precios");
         printf("\n4) Buscar producto por nombre");
         printf("\n5) Salir");
-        printf("\n>>>");
+        printf("\n>>> ");
+
+        if (fgets(entrada, 25, stdin) == NULL)
+        {
+            LimpiarBuffer();
+            continue;
+        }
+        entrada[strcspn(entrada, "\n")] = '\0';
+
+        if (VerificacionDigitos(entrada))
+        {
+            opc = atoi(entrada);
+        }
+
+        switch (opc)
+        {
+        case 1:
+            printf("\nEl precio total del inventario es: %.2f", PrecioTotal(precios, n));
+            break;
+
+        case 2:
+            CaroBarato(productos, precios, n);
+            break;
+
+        case 3:
+            printf("\nEl precio promedio de los productos es: %.2f", Promediar(precios, n));
+            break;
+
+        case 4:
+
+            int nombreValido = 0;
+            do
+            {
+                printf("\nIngrese el producto que desea buscar: ");
+                if (fgets(entrada, 25, stdin) == NULL)
+                {
+                    LimpiarBuffer();
+                    nombreValido = 0;
+                    continue;
+                }
+
+                // Eliminar el salto de línea al final de la cadena
+                entrada[strcspn(entrada, "\n")] = '\0';
+
+                if (VerificacionChar(entrada) == 1)
+                {
+                    strcpy(busqueda, entrada);
+                    nombreValido = 1;
+                }
+                else
+                {
+                    printf("\nSolo se permiten letras sin simbolos. Intentelo de nuevo.");
+                    nombreValido = 0;
+                }
+
+            } while (nombreValido == 0);
+
+            BuscarProd(busqueda, productos, precios, n);
+            break;
+
+        case 5:
+            printf("\nGracias por usar nuestro sistema. Saliendo...");
+            return 0;
+            break;
+
+        default:
+            printf("\nOpcion invalida. Intente de nuevo.");
+            break;
+        }
 
     } while (opc != 6);
-
-    // for (int i = 0; i < 1; i++)
-    // {
-    //     printf("\nNombre #%i: %s", i + 1, productos[i]);
-    // }
 
     return 0;
 }

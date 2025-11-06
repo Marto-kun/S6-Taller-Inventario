@@ -56,7 +56,7 @@ void CaroBarato(char productos[][25], float precios[], int tamano)
     }
 
     printf("\nEl producto mas caro es %c y cuesta $%.2f", productos[indexAl], precioAlto);
-    printf("\nEl producto mas barato es %c y cuesta $%.2f", productos[indexAl], precioBajo);
+    printf("\nEl producto mas barato es %c y cuesta $%.2f", productos[indexBa], precioBajo);
 }
 
 /**
@@ -66,7 +66,6 @@ void CaroBarato(char productos[][25], float precios[], int tamano)
  * @param tamano
  * @return float promedio
  */
-
 float Promediar(float precios[], int tamano)
 {
     float suma = 0, promedio = 0;
@@ -90,7 +89,6 @@ float Promediar(float precios[], int tamano)
  * @param precios Vector de precios asociados
  * @param tamano Numero de filas
  *  de la matriz de nombres
- *
  */
 void BuscarProd(char entrada[], char productos[][25], float precios[], int tamano)
 {
