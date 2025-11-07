@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
     } while (nValido == 0);
 
-    char productos[n][25];
+    char productos[n][25];   //Creacion de variables con el tamano ingresado por el usuario
     float precios[n];
 
     for (int i = 0; i < n; i++)
