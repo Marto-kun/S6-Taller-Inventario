@@ -55,8 +55,8 @@ void CaroBarato(char productos[][25], float precios[], int tamano)
         }
     }
 
-    printf("\nEl producto mas caro es %c y cuesta $%.2f", productos[indexAl], precioAlto);
-    printf("\nEl producto mas barato es %c y cuesta $%.2f", productos[indexBa], precioBajo);
+    printf("\nEl producto mas caro es %s y cuesta $%.2f", productos[indexAl], precioAlto);
+    printf("\nEl producto mas barato es %s y cuesta $%.2f", productos[indexBa], precioBajo);
 }
 
 /**

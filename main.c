@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-
+    int verif;
     int n, opc;
     char entrada[25], busqueda[25];
 
@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
         int precioValido = 0;
         do
         {
-            printf("\nIngrese el precio de %c: ", productos[i]);
+            printf("\nIngrese el precio de %s: ", productos[i]);
             if (fgets(entrada, 25, stdin) == NULL)
             {
                 LimpiarBuffer();
@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 
             if (VerificacionFloat(entrada) == 1)
             {
-                int precioIngresado = atof(entrada);
+                float precioIngresado = atof(entrada);
 
                 if (precioIngresado > 0)
                 {
@@ -117,26 +117,35 @@ int main(int argc, char *argv[])
 
     do
     {
-        printf("\n=====================================\n");
-        printf("\nElija la opcion deseada:");
-        printf("\n1) Precio total del inventario");
-        printf("\n2) Producto mas caro y mas barato");
-        printf("\n3) Promedio de precios");
-        printf("\n4) Buscar producto por nombre");
-        printf("\n5) Salir");
-        printf("\n>>> ");
-
-        if (fgets(entrada, 25, stdin) == NULL)
+        do
         {
-            LimpiarBuffer();
-            continue;
-        }
-        entrada[strcspn(entrada, "\n")] = '\0';
+            printf("\n=====================================\n");
+            printf("\nElija la opcion deseada:");
+            printf("\n1) Precio total del inventario");
+            printf("\n2) Producto mas caro y mas barato");
+            printf("\n3) Promedio de precios");
+            printf("\n4) Buscar producto por nombre");
+            printf("\n5) Salir");
+            printf("\n>>> ");
 
-        if (VerificacionDigitos(entrada))
-        {
-            opc = atoi(entrada);
-        }
+            verif = 0;
+            if (fgets(entrada, 25, stdin) == NULL)
+            {
+                LimpiarBuffer();
+                continue;
+            }
+            entrada[strcspn(entrada, "\n")] = '\0';
+
+            if (VerificacionDigitos(entrada))
+            {
+                opc = atoi(entrada);
+                verif = 1;
+            }
+            else
+            {
+                printf("\nSolo se permiten numeros enteros. Intentelo de nuevo...");
+            }
+        } while (verif == 0);
 
         switch (opc)
         {
@@ -149,7 +158,8 @@ int main(int argc, char *argv[])
             break;
 
         case 3:
-            printf("\nEl precio promedio de los productos es: %.2f", Promediar(precios, n));
+            float promedio = Promediar(precios, n);
+            printf("\nEl precio promedio de los productos es: %.2f", promedio);
             break;
 
         case 4:
